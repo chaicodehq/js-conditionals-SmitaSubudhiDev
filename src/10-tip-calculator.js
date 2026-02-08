@@ -30,5 +30,46 @@
  * @returns {{ tipPercentage: number, tipAmount: number, totalAmount: number } | null}
  */
 export function calculateTip(billAmount, serviceRating) {
-  // Your code here
+  var tippercentage=0;
+  var tipAmount=0;
+  var totalAmount=0
+  if (billAmount <= 0 && serviceRating < 5) {
+    return null;
+  } else {
+    switch (serviceRating) {
+      case 1:
+        return {
+          tipPercentage: 5,
+          tipAmount: Math.ceil(billAmount * 5)/100,
+          totalAmount: billAmount + (billAmount * 5) / 100,
+        };
+
+      case 2:
+        return {
+          tipPercentage: 10,
+          tipAmount: Math.ceil(billAmount * 10)/100,
+          totalAmount: billAmount + (billAmount * 10) / 100,
+        };
+      case 3:
+        return {
+          tipPercentage: 15,
+          tipAmount: Math.ceil(billAmount * 15)/100,
+          totalAmount: billAmount + (billAmount * 15) / 100,
+        };
+      case 4:
+        return {
+          tipPercentage: 20,
+          tipAmount: Math.ceil(billAmount * 20)/100,
+          totalAmount: billAmount + (billAmount * 20) / 100,
+        };
+      case 5:
+        return {
+          tipPercentage: 25,
+          tipAmount: Math.ceil(billAmount * 25)/100,
+          totalAmount: billAmount + (billAmount * 25) / 100,
+        };
+        default:
+          return null
+    }
+  }
 }

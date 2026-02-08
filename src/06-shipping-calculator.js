@@ -12,6 +12,7 @@
  *
  * International Shipping (any other country):
  *   - Weight up to 1 kg:   $15
+ *
  *   - Weight up to 5 kg:   $25
  *   - Weight over 5 kg:    $40
  *
@@ -29,5 +30,23 @@
  * @returns {number} Shipping cost, 0 for free shipping, or -1 for invalid input
  */
 export function calculateShipping(weight, country, orderTotal) {
-  // Your code here
+  if (orderTotal < 0 || weight <= 0) {
+    return -1;
+  }
+  var isdomestic = country == "US";
+  if (isdomestic && orderTotal > 50) {
+    return 0;
+  }
+  if (!isdomestic && orderTotal > 100) {
+    return 0;
+  }
+  if (isdomestic) {
+    if (weight > 0 && weight <= 1) return 5;
+    if (weight > 1 && weight <= 5) return 10;
+    else return 15;
+  } else {
+    if (weight > 0 && weight <= 1) return 15;
+    if (weight > 1 && weight <= 5) return 25;
+    else return 40;
+  }
 }

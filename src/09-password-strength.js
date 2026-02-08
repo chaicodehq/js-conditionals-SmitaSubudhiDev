@@ -10,7 +10,7 @@
  *   2. Contains at least one uppercase letter (A-Z)
  *   3. Contains at least one lowercase letter (a-z)
  *   4. Contains at least one number (0-9)
- *   5. Contains at least one special character (!@#$%^&*()_+-=[]{}|;:,.<>?)
+ *   5. Contains at least one special character (/)
  *
  * Strength levels based on how many criteria are met:
  *   - 0–1 criteria → "weak"
@@ -26,5 +26,37 @@
  * @returns {string} "weak", "medium", "strong", or "very strong"
  */
 export function checkPasswordStrength(password) {
-  // Your code here
+  var criteria = 0;
+  if (password == null) {
+    return "weak";
+  }
+  if (password.length >= 8) {
+    criteria += 1;
+  }
+  if (/[A-Z]/.test(password)) {
+    console.log("true for capital letter");
+    criteria += 1;
+  }
+  if (/[a-z]/.test(password)) {
+    criteria += 1;
+  }
+  if (/[0-9]/.test(password)) {
+    criteria += 1;
+  }
+  if (/[^\w\s]/.test(password)) {
+    criteria += 1;
+  }
+
+  switch (criteria) {
+    case 0:
+    case 1:
+      return "weak";
+    case 2:
+    case 3:
+      return "medium";
+    case 4:
+      return "strong";
+    case 5:
+      return "very strong";
+  }
 }

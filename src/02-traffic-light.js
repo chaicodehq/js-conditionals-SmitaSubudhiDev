@@ -22,5 +22,24 @@
  * @returns {string} The driving action to take
  */
 export function getTrafficAction(color) {
-  // Your code here
+  switch (color) {
+    case "Green":
+    case "GREEN":
+    case "green":
+      return "GO";
+    case "yellow":
+    case "YELLOW":
+    case "Yellow":
+      return "SLOW DOWN";
+    case "red":
+    case "RED":
+    case "Red":
+      return "STOP";
+    case "flashing red":
+    case "FLASHING RED":
+    case "Flashing Red":
+      return "STOP AND PROCEED WITH CAUTION";
+    default:
+      return "INVALID SIGNAL";
+  }
 }
